@@ -48,8 +48,7 @@ def trackEmail():
 		id = request.get_json(force=True)['id']
 	except:
 		id = "Unknown"
-	global currEmail
-	currEmail = [id, False)]
+	currEmail = [id, False]
 	ret = "Tracking email: " + str(id)
 	return json.dumps(ret)
 # Running/Starting the server
