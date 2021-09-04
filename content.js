@@ -44,14 +44,27 @@ function run(){
 	
 	// make a variable that holds everything after the '#'
 	// const emailType = window.location.href.split("#")[1]
+	console.log("here1");
+	if (window.location.href.indexOf("compose=") > -1){
+		var delay = setTimeout(compose, 2000);
+	}
 	
 	if (window.location.href.indexOf("#sent/") > -1)
 		// send back to python: QgrcJHrtqfmLRdjhfzkRGdzmQMsJZfRgBHQ
-		
 		// QgrcJHrtqfmLRdjhfzkRGdzmQMsJZfRgBHQ, img (whether it's been seen)
-		
 		var delay = setTimeout(checkSeen, 5000);
 }
+
+function compose(){
+	console.log("here2");
+	var btn = document.getElementsByClassName("T-I J-J5-Ji aoO v7 T-I-atl L3");
+	if (btn){
+		btn.addEventListener("click", function click() {
+			console.log("hi")
+		},false);
+	}
+}
+
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	console.log(request);

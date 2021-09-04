@@ -16,5 +16,5 @@
 		"default_popup" : "popup.html",
 		"default_title" : "EmailTracker"
 	},
-	"permissions" : ["http://127.0.0.1:5000/*", "https://mail.google.com/mail/u/*", "activeTab", "https://ajax.googleapis.com"]
+	"permissions" : ["http://127.0.0.1:5000/*", "https://mail.google.com/mail/u/*", "activeTab"]
 }
