@@ -56,10 +56,9 @@ function run(){
 }
 
 function compose(){
-	console.log("here2");
 	var btn = document.getElementsByClassName("T-I J-J5-Ji aoO v7 T-I-atl L3");
 	if (btn){
-		btn.addEventListener("click", function click() {
+		btn[0].addEventListener("click", function click() {
 			console.log("hi")
 		},false);
 	}
