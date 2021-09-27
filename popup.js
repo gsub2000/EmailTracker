@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		function (tabs) {
 			console.log(tabs[0].url);
 			if(tabs[0].url.indexOf("compose=") > -1){
-				chrome.tabs.sendMessage(tabs[0].id, { action: "getInfo", index: tabs[0].index })
+				chrome.tabs.sendMessage(tabs[0].id, { action: "getInfo", index: tabs[0].index }, printUrl)
 			}
 			else{
 				var field = document.getElementById("myfield");
@@ -20,7 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function printUrl(res){
-		console.log(res)
+		console.log(res);
+		var field = document.getElementById("myfield");
+		field.setAttribute("value", res);
 	}
 	
 }, false)

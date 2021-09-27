@@ -73,6 +73,14 @@ function compose(){
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	if(request.action == "getInfo"){
 		console.log("works!!!!!");
+		// email OR recipient name
+		console.log(document.getElementsByClassName("vR")[0].innerText);
+		var recipient = document.getElementsByClassName("vR")[0].innerText;
+		// email subject
+		console.log(document.getElementsByClassName("aoT")[0].value)
+		var subj = document.getElementsByClassName("aoT")[0].value;
+
+		sendResponse("http://127.0.0.1:5000/test?email="+ recipient.split(' ').join('') + "&subject=" + subj.split(' ').join(''))
 	}
 	else {
 		console.log(request);
@@ -80,7 +88,3 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 })
 run();
 window.addEventListener('hashchange', run);
-
-/*var recipient = document.getElementsByClassName("vR")[0].innerText;
-		var subj = document.getElementsByClassName("aoT")[0].value;
-		sendResponse("http://127.0.0.1:5000/test?email=" + recipient.split().join('') + "&subject=" + subj.split().join('')) */
