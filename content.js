@@ -46,7 +46,7 @@ function run(){
 	// const emailType = window.location.href.split("#")[1]
 	console.log("here1");
 	if (window.location.href.indexOf("compose=") > -1){
-		var delay = setTimeout(compose, 2000);
+		//var delay = setTimeout(compose, 2000);
 	}
 	
 	if (window.location.href.indexOf("#sent/") > -1)
@@ -59,18 +59,28 @@ function compose(){
 	var btn = document.getElementsByClassName("T-I J-J5-Ji aoO v7 T-I-atl L3");
 	if (btn){
 		btn[0].addEventListener("click", function click() {
-			console.log("hi")
+			console.log("hellooo")
+			console.log(document.getElementsByClassName("vR"))
+			// myStorage = window.localStorage;
+			// myStorage.setItem("email","subject")
+			// console.log(myStorage.getItem("email"));
+
 		},false);
 	}
 }
 
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-	console.log(request);
-	let ind = window.location.href.indexOf("#sent/");
-	let emailCode = window.location.href.substring(ind + 6);
-	sendResponse(emailCode);
+	if(request.action == "getInfo"){
+		console.log("works!!!!!");
+	}
+	else {
+		console.log(request);
+	}
 })
 run();
 window.addEventListener('hashchange', run);
 
+/*var recipient = document.getElementsByClassName("vR")[0].innerText;
+		var subj = document.getElementsByClassName("aoT")[0].value;
+		sendResponse("http://127.0.0.1:5000/test?email=" + recipient.split().join('') + "&subject=" + subj.split().join('')) */
