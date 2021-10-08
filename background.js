@@ -8,9 +8,10 @@ chrome.runtime.onMessage.addListener(
 	var d = JSON.stringify({"word": request});
 	
 	$.ajax({
-		type: 'GET',
-		url: 'http://127.0.0.1:5000/check',
+		type: 'POST',
+		url: 'https://emailtracker-ext.herokuapp.com/check',
 		encoding: 'UTF-8',
+		data: d,
 		success: function (resp) {
 			response(resp);
 		},

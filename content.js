@@ -18,10 +18,16 @@ function checkSeen(){
 		const divTag = document.createElement('div');
 		divTag.className = "tracker";
 
-		let ind = window.location.href.indexOf("#sent/");
-		let emailCode = window.location.href.substring(ind + 6);
+		/*let ind = window.location.href.indexOf("#sent/");
+		let emailCode = window.location.href.substring(ind + 6);*/
 		
-		chrome.runtime.sendMessage(emailCode, function(response){
+		var name = document.getElementsByClassName("gD")[0].innerText;
+		console.log(name);
+
+		var subj = document.getElementsByClassName("hP")[0].innerText;
+		console.log(subj);
+
+		chrome.runtime.sendMessage(name, function(response){
 			console.log(response);
 			divTag.textContent = response;
 		});
@@ -80,7 +86,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 		console.log(document.getElementsByClassName("aoT")[0].value)
 		var subj = document.getElementsByClassName("aoT")[0].value;
 
-		sendResponse("http://127.0.0.1:5000/test?email="+ recipient.split(' ').join('') + "&subject=" + subj.split(' ').join(''))
+		myStorage = window.localStorage;
+		myStorage.setItem(recipient, subj);
+		console.log(myStorage.getItem(recipient));
+
+		sendResponse("https://emailtracker-ext.herokuapp.com/test?email="+ recipient.split(' ').join('') + "&subject=" + subj.split(' ').join(''))
 	}
 	else {
 		console.log(request);

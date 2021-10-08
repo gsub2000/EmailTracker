@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 import json
 
 # list of email information
-currEmail = ["", False]
+currEmail = []
 # Creating Python Flask object (creates the server)
 app = Flask(__name__)
 cors = CORS(app)
@@ -21,41 +21,31 @@ def root():
 # email1@gmail.com -> www.url.com/test?id=email1+date=100120
 @app.route('/test')
 def testImage():
-    ip_list = request.access_route
-    print(ip_list[0])
-    
-    temp = ip_list[0].split('.')
-    my_ip = temp[0] + '.' + temp[1]
+	email = request.args.get("email")
+	subj = request.args.get("subject")
+	
+	ip_list = request.access_route
+	print(ip_list[0])
+	temp = ip_list[0].split('.')
+	my_ip = temp[0] + '.' + temp[1]
 
-    if my_ip == '130.211':
-        print("I opened the image!")
-        currEmail[1] = True
-    else:
-        currEmail[1] = True
-    
-    return send_file("smallpixel.png", mimetype = "image/gif")
+	if my_ip == '130.211':
+		print("I opened the image!")
+	else:
+		currEmail.append([email, subj])
+
+	return send_file("smallpixel.png", mimetype = "image/gif")
 
 # checking current status of the email we are tracking (checks if seen) 
-@app.route('/check')
+@app.route('/check', methods=["POST"])
 def checkStatus():
-	if currEmail[1]:
-		return json.dumps("Seen")
+	for item in currEmail:
+		print(request.get_json(force=True)['word'].split(' ').join(''))
+		if item[0] == request.get_json(force=True)['word'].split(' ').join(''):
+			return json.dumps("Seen")
 	return json.dumps("Unopened")
 	
 	
-# this is to set the email that is being tracked
-@app.route('/track', methods=["POST"])
-def trackEmail():
-	id = ""
-	try:
-		id = request.get_json(force=True)['id']
-	except:
-		id = "Unknown"
-	currEmail = [id, False]
-	ret = "Tracking email: " + str(id)
-	return json.dumps(ret)
-
-
 # Running/Starting the server
 if __name__ ==  '__main__':
   app.run()
