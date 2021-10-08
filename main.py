@@ -40,12 +40,12 @@ def testImage():
 @app.route('/check', methods=["POST"])
 def checkStatus():
 	for item in currEmail:
-		print(request.get_json(force=True)['word'].split(' ').join(''))
+		print(request.get_json(force=True)['word'])
 		if item[0] == request.get_json(force=True)['word'].split(' ').join(''):
 			return json.dumps("Seen")
 	return json.dumps("Unopened")
 	
-	
+
 # Running/Starting the server
 if __name__ ==  '__main__':
   app.run()
