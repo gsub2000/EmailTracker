@@ -41,7 +41,8 @@ def testImage():
 def checkStatus():
 	for item in currEmail:
 		print(request.get_json(force=True)['word'])
-		if item[0] == request.get_json(force=True)['word'].split(' ').join(''):
+		print(item[0])
+		if item[0] == request.get_json(force=True)['word'].replace(' ', ''):
 			return json.dumps("Seen")
 	return json.dumps("Unopened")
 	
