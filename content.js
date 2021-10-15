@@ -21,7 +21,7 @@ function checkSeen(){
 		/*let ind = window.location.href.indexOf("#sent/");
 		let emailCode = window.location.href.substring(ind + 6);*/
 		
-		var name = document.getElementsByClassName("gD")[0].innerText;
+		var name = document.getElementsByClassName("g2")[0].innerText;
 		console.log(name);
 
 		var subj = document.getElementsByClassName("hP")[0].innerText;
