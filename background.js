@@ -5,7 +5,8 @@ console.log("This is the background script.");
 chrome.runtime.onMessage.addListener(
 	function(request, sender, response){
 	console.log(request);
-	var d = JSON.stringify({"word": request});
+	const arr = request.split("&")
+	var d = JSON.stringify({"name": arr[0], "subj": arr[1]});
 	
 	$.ajax({
 		type: 'POST',
