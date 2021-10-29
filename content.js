@@ -27,9 +27,9 @@ function checkSeen(){
 		var subj = document.getElementsByClassName("hP")[0].innerText;
 		console.log(subj);
 
-		let fullstr = name + "&" + subj;
+		let fullstr = name + '&' + subj;
 
-		chrome.runtime.sendMessage(name, function(response){
+		chrome.runtime.sendMessage(fullstr, function(response){
 			console.log(response);
 			divTag.textContent = response;
 		});
