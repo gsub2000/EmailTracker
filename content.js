@@ -31,7 +31,7 @@ function checkSeen(){
 
 		chrome.runtime.sendMessage(fullstr, function(response){
 			console.log(response);
-			divTag.textContent = response;
+			divTag.textContent = '<b>Status: </b>' + response.replace('"', '');
 		});
 
 		// <td><h3></h3></td>

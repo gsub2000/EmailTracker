@@ -44,7 +44,10 @@ def checkStatus():
 		print(currName)
 		print(item[0])
 		if item[0] == currName or currName in item[0]:
-			if (item[1] == request.get_json(force=True)['subj'].replace(' ', '')):
+			currSubj = request.get_json(force=True)['subj'].replace(' ', '')
+			print(currSubj)
+			print(item[1])
+			if item[1] == currSubj or currSubj in item[1]:
 				return json.dumps("Seen")
 	return json.dumps("Unopened")
 	
