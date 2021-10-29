@@ -81,10 +81,9 @@ function compose(){
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	if(request.action == "getInfo"){
 		console.log("works!!!!!");
-		console.log(document.getElementsByClassName("vR")[0]);
 		// email OR recipient name
-		console.log(document.getElementsByClassName("vR")[0].innerText);
-		var recipient = document.getElementsByClassName("vR")[0].innerText;
+		console.log(document.getElementsByClassName("oL aDm az9")[0].getElementsByTagName('span')[0].innerText);
+		var recipient = document.getElementsByClassName("oL aDm az9")[0].getElementsByTagName('span')[0].innerText;
 		// email subject
 		console.log(document.getElementsByClassName("aoT")[0].value)
 		var subj = document.getElementsByClassName("aoT")[0].value;
