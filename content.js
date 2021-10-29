@@ -81,6 +81,7 @@ function compose(){
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	if(request.action == "getInfo"){
 		console.log("works!!!!!");
+		console.log(document.getElementsByClassName("vR")[0]);
 		// email OR recipient name
 		console.log(document.getElementsByClassName("vR")[0].innerText);
 		var recipient = document.getElementsByClassName("vR")[0].innerText;
